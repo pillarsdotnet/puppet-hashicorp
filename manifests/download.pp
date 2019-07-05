@@ -42,8 +42,5 @@ define hashicorp::download (
   file { "${install_dir}/${name}":
     ensure => link,
     target => "${install_dir}/${name}-${version}",
-    before => Anchor["hashicorp::install::${name}"],
   }
-
-  anchor { "hashicorp::install::${name}": }
 }

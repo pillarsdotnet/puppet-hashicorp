@@ -21,6 +21,6 @@ define hashicorp::service (
     ensure   => $ensure,
     enable   => $enable,
     provider => $provider,
-    require  => Anchor["hashicorp::install::${name}", "hashicorp::config::${name}"],
+    require  => [Hashicorp::Download[$name], Anchor["hashicorp::config::${name}"]],
   }
 }
